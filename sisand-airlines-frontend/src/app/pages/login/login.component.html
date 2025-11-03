@@ -1,10 +1,21 @@
 <h2>Login</h2>
-<form (ngSubmit)="login()">
-  <label>Email:</label>
-  <input type="email" [(ngModel)]="email" name="email" required />
 
-  <label>Senha:</label>
-  <input type="password" [(ngModel)]="password" name="password" required />
+<form (ngSubmit)="submit()">
+  <div>
+    <label>Email</label><br />
+    <input type="email" name="email" [(ngModel)]="email" required />
+  </div>
 
-  <button type="submit">Entrar</button>
+  <div style="margin-top:8px;">
+    <label>Senha</label><br />
+    <input type="password" name="senha" [(ngModel)]="senha" required />
+  </div>
+
+  <div *ngIf="error" style="color:#b00020; margin-top:8px;">
+    {{ error }}
+  </div>
+
+  <button type="submit" [disabled]="loading" style="margin-top:12px;">
+    {{ loading ? 'Entrando...' : 'Entrar' }}
+  </button>
 </form>
