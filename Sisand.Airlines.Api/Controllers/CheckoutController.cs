@@ -44,6 +44,10 @@ namespace Sisand.Airlines.Api.Controllers
                 if (assento == null)
                     return NotFound(new { erro = "Assento não encontrado." });
 
+                if (!assento.Disponivel)
+                    return BadRequest(new { erro = "Assento já está reservado." });
+
+
                 // 🪪 Criar reserva
                 var reserva = new Reserva
                 {

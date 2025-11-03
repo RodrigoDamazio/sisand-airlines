@@ -1,13 +1,10 @@
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.Configuration;
 using Dapper;
-using Npgsql;
 using Sisand.Airlines.Infrastructure.Context;
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using Microsoft.IdentityModel.Tokens;
 using System.Text;
-using Sisand.Airlines.Domain.Entities;
 using Sisand.Airlines.Domain.Interfaces;
 
 namespace Sisand.Airlines.Api.Controllers
@@ -64,6 +61,9 @@ namespace Sisand.Airlines.Api.Controllers
         [HttpPost("register")]
         public async Task<IActionResult> Register([FromBody] RegisterRequest request)
         {
+            if (request.Senha != request.ConfirmarSenha)
+                return BadRequest("As senhas não coincidem.");
+
             using var connection = _context.CreateConnection();
 
             var jaExiste = await connection.QueryFirstOrDefaultAsync<int>(
@@ -76,15 +76,16 @@ namespace Sisand.Airlines.Api.Controllers
 
             var userId = Guid.NewGuid();
             await connection.ExecuteAsync(@"
-                INSERT INTO users (id, full_name, email, password_hash, cpf)
-                VALUES (@Id, @Nome, @Email, @PasswordHash, @Cpf)",
+                INSERT INTO users (id, full_name, email, password_hash, cpf, birth_date)
+                VALUES (@Id, @Nome, @Email, @PasswordHash, @Cpf, @DataNascimento)",
                 new
                 {
                     Id = userId,
                     Nome = request.NomeCompleto,
                     Email = request.Email,
                     PasswordHash = hash,
-                    Cpf = request.Cpf
+                    Cpf = request.Cpf,
+                    DataNascimento = request.DataNascimento
                 });
 
             return Ok(new { mensagem = "Usuário cadastrado com sucesso.", id = userId });
@@ -122,9 +123,5 @@ namespace Sisand.Airlines.Api.Controllers
 
             return new JwtSecurityTokenHandler().WriteToken(token);
         }
-
-
-
-    }
-    
+    }   
 }
