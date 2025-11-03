@@ -100,17 +100,31 @@ var app = builder.Build();
 // ✅ Ativa o CORS antes de autenticação
 app.UseCors("AllowFrontend");
 
-// ✅ Swagger sempre habilitado, independentemente do ambiente
+// ✅ Swagger apenas na rota /swagger
 app.UseSwagger();
 app.UseSwaggerUI(c =>
 {
     c.SwaggerEndpoint("/swagger/v1/swagger.json", "Sisand Airlines API v1");
-    c.RoutePrefix = string.Empty;
+    // Mantém o Swagger em /swagger (não na raiz)
+    c.RoutePrefix = "swagger";
 });
 
 // app.UseHttpsRedirection();
-app.UseAuthentication(); 
+app.UseAuthentication();
 app.UseAuthorization();
 
 app.MapControllers();
+
+// ✅ Endpoint simples na raiz ("/")
+app.MapGet("/", () => Results.Text(@"
+    <html>
+        <head><title>Sisand Airlines API</title></head>
+        <body style='font-family:sans-serif;text-align:center;margin-top:50px;'>
+            <h1>🛫 Sisand Airlines API</h1>
+            <p>API está rodando com sucesso!</p>
+            <p><a href='/swagger' style='font-size:18px;'>👉 Acesse o Swagger UI</a></p>
+        </body>
+    </html>
+", "text/html"));
+
 app.Run();

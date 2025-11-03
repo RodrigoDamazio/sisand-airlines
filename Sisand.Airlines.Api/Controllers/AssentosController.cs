@@ -17,9 +17,6 @@ namespace Sisand.Airlines.Api.Controllers
             _unitOfWork = unitOfWork;
         }
 
-        /// <summary>
-        /// Retorna os assentos disponíveis para um voo específico.
-        /// </summary>
         [HttpGet("{vooId}")]
         public async Task<IActionResult> GetAssentosPorVoo(Guid vooId)
         {

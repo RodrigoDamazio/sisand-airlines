@@ -1,4 +1,4 @@
-version: "3.9"
+
 
 services:
   # 🛫 Backend .NET API
@@ -7,27 +7,28 @@ services:
       context: .
       dockerfile: Sisand.Airlines.Api/Dockerfile
     ports:
-      - "5200:8080"
+      - "5300:8080"
     depends_on:
       - postgres
       - mailhog
     environment:
       - ASPNETCORE_ENVIRONMENT=Development
+      - ASPNETCORE_URLS=http://+:8080 
       - ConnectionStrings__Postgres=Host=postgres;Port=5432;Database=sisanddb;Username=postgres;Password=123456
     networks:
       - sisand_network
 
   # 🎨 Frontend Angular
-  frontend:
-    build:
-      context: ./sisand-airlines-frontend
-      dockerfile: Dockerfile
-    ports:
-      - "4200:80"
-    depends_on:
-      - api
-    networks:
-      - sisand_network
+  # frontend:
+  #   build:
+  #     context: ./sisand-airlines-frontend
+  #     dockerfile: Dockerfile
+  #   ports:
+  #     - "4200:80"
+  #   depends_on:
+  #     - api
+  #   networks:
+  #     - sisand_network
 
   # 🐘 Banco de Dados PostgreSQL
   postgres:
@@ -40,7 +41,7 @@ services:
     ports:
       - "5432:5432"
     volumes:
-      - ./init.sql:/docker-entrypoint-initdb.d/init.sql
+      - ./init_v1.1.sql:/docker-entrypoint-initdb.d/init.sql
     networks:
       - sisand_network
 

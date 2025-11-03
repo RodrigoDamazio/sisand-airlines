@@ -48,9 +48,9 @@ namespace Sisand.Airlines.Infrastructure
             if (_transaction != null)
                 await _transaction.CommitAsync();
 
-            if (_connection.State == System.Data.ConnectionState.Open)
-                await _connection.CloseAsync();
+            _transaction = null; 
         }
+
 
         public async Task RollbackAsync()
         {

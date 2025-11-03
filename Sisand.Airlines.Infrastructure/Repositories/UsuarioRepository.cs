@@ -18,7 +18,7 @@ namespace Sisand.Airlines.Infrastructure.Repositories
         {
             using var conn = _context.CreateConnection();
             return await conn.QueryFirstOrDefaultAsync<Usuario>(
-                "SELECT id, full_name AS Nome, email, cpf, password_hash AS PasswordHash FROM users WHERE id = @id",
+                "SELECT id, full_name AS Nome, email, cpf, password_hash AS PasswordHash, birth_date AS DataNascimento FROM users WHERE id = @id",
                 new { id });
         }
 
@@ -34,8 +34,8 @@ namespace Sisand.Airlines.Infrastructure.Repositories
         {
             using var conn = _context.CreateConnection();
             await conn.ExecuteAsync(@"
-                INSERT INTO users (id, full_name, email, cpf, password_hash)
-                VALUES (@Id, @Nome, @Email, @Cpf, @PasswordHash)
+                INSERT INTO users (id, full_name, email, cpf, password_hash, birth_date)
+                VALUES (@Id, @Nome, @Email, @Cpf, @PasswordHash, @DataNascimento)
             ", usuario);
         }
     }
