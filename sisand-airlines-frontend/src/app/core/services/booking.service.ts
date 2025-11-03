@@ -1,18 +1,15 @@
-import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
 import { environment } from '../../../environments/environment';
+import { Observable } from 'rxjs';
 
 @Injectable({ providedIn: 'root' })
 export class BookingService {
-  private baseUrl = `${environment.apiUrl}/bookings`;
+  private baseUrl = `${environment.API_URL}/checkout`;
 
   constructor(private http: HttpClient) {}
 
-  createBooking(booking: any) {
-    return this.http.post(this.baseUrl, booking);
-  }
-
-  getUserBookings(userId: string) {
-    return this.http.get(`${this.baseUrl}/user/${userId}`);
+  reservar(payload: { assentoId: string; usuarioId: string }): Observable<any> {
+    return this.http.post(`${this.baseUrl}/reservar`, payload);
   }
 }
