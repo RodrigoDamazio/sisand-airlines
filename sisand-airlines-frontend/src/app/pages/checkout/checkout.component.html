@@ -1,0 +1,9 @@
+<h2>Checkout</h2>
+
+<div *ngIf="loading">Carregando voos disponíveis...</div>
+
+<ul *ngIf="!loading">
+  <li *ngFor="let seat of seats">
+    Voo: {{ seat.flight_number }} - Assento: {{ seat.seat_number }}
+  </li>
+</ul>
