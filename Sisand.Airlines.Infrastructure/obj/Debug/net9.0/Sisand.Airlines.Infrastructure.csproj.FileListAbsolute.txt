@@ -1,0 +1,15 @@
+C:\Users\ugers\TesteAptidao\Sisand.Airlines.Infrastructure\bin\Debug\net9.0\Sisand.Airlines.Infrastructure.deps.json
+C:\Users\ugers\TesteAptidao\Sisand.Airlines.Infrastructure\bin\Debug\net9.0\Sisand.Airlines.Infrastructure.dll
+C:\Users\ugers\TesteAptidao\Sisand.Airlines.Infrastructure\bin\Debug\net9.0\Sisand.Airlines.Infrastructure.pdb
+C:\Users\ugers\TesteAptidao\Sisand.Airlines.Infrastructure\bin\Debug\net9.0\Sisand.Airlines.Domain.dll
+C:\Users\ugers\TesteAptidao\Sisand.Airlines.Infrastructure\bin\Debug\net9.0\Sisand.Airlines.Domain.pdb
+C:\Users\ugers\TesteAptidao\Sisand.Airlines.Infrastructure\obj\Debug\net9.0\Sisand.Airlines.Infrastructure.csproj.AssemblyReference.cache
+C:\Users\ugers\TesteAptidao\Sisand.Airlines.Infrastructure\obj\Debug\net9.0\Sisand.Airlines.Infrastructure.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\ugers\TesteAptidao\Sisand.Airlines.Infrastructure\obj\Debug\net9.0\Sisand.Airlines.Infrastructure.AssemblyInfoInputs.cache
+C:\Users\ugers\TesteAptidao\Sisand.Airlines.Infrastructure\obj\Debug\net9.0\Sisand.Airlines.Infrastructure.AssemblyInfo.cs
+C:\Users\ugers\TesteAptidao\Sisand.Airlines.Infrastructure\obj\Debug\net9.0\Sisand.Airlines.Infrastructure.csproj.CoreCompileInputs.cache
+C:\Users\ugers\TesteAptidao\Sisand.Airlines.Infrastructure\obj\Debug\net9.0\Sisand.A.3EDAC588.Up2Date
+C:\Users\ugers\TesteAptidao\Sisand.Airlines.Infrastructure\obj\Debug\net9.0\Sisand.Airlines.Infrastructure.dll
+C:\Users\ugers\TesteAptidao\Sisand.Airlines.Infrastructure\obj\Debug\net9.0\refint\Sisand.Airlines.Infrastructure.dll
+C:\Users\ugers\TesteAptidao\Sisand.Airlines.Infrastructure\obj\Debug\net9.0\Sisand.Airlines.Infrastructure.pdb
+C:\Users\ugers\TesteAptidao\Sisand.Airlines.Infrastructure\obj\Debug\net9.0\ref\Sisand.Airlines.Infrastructure.dll

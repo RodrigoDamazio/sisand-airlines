@@ -1,0 +1,3 @@
+﻿<Project>
+  <Import Project="..\build\Sisand.Airlines.Api.props" />
+</Project>

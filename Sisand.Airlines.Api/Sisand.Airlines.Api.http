@@ -1,0 +1,6 @@
+@Sisand.Airlines.Api_HostAddress = http://localhost:5269
+
+GET {{Sisand.Airlines.Api_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###

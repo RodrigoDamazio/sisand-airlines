@@ -1,0 +1,12 @@
+using Sisand.Airlines.Domain.Entities;
+
+namespace Sisand.Airlines.Domain.Repositories
+{
+    public interface IReservaRepository
+    {
+        Task CriarReservaAsync(Reserva reserva);
+        Task<IEnumerable<object>> ObterPorUsuarioAsync(Guid usuarioId);
+
+        
+    }
+}
