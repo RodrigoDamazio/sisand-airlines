@@ -6,6 +6,9 @@ namespace Sisand.Airlines.Domain.Repositories
     {
         Task CriarReservaAsync(Reserva reserva);
         Task<IEnumerable<object>> ObterPorUsuarioAsync(Guid usuarioId);
+        Task RemoverReservaAsync(Guid id);
+        Task<Reserva?> ObterPorIdAsync(Guid id);
+        Task<IEnumerable<object>> ObterReservaPorUsuarioAsync(Guid usuarioId);
 
         
     }

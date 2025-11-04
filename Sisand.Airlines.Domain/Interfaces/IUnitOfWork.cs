@@ -13,5 +13,6 @@ namespace Sisand.Airlines.Domain.Interfaces
         Task BeginTransactionAsync();
         Task CommitAsync();
         Task RollbackAsync();
+        
     }
 }

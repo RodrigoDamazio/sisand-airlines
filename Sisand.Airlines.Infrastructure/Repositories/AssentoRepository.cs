@@ -34,6 +34,11 @@ namespace Sisand.Airlines.Infrastructure.Repositories
             return await _connection.QueryAsync<Assento>(sql, new { VooId = vooId });
         }
 
+        public async Task LiberarAssentoAsync(Guid assentoId)
+        {
+            const string sql = "UPDATE seats SET is_available = TRUE WHERE id = @Id;";
+            await _connection.ExecuteAsync(sql, new { Id = assentoId });
+        }
 
         public async Task<Assento?> ObterPorIdAsync(Guid id)
         {

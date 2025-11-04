@@ -1,11 +1,12 @@
 <header>
   <h1>Sisand Airlines</h1>
   <nav>
-    <a routerLink="/">Home</a> |
-    <a routerLink="/checkout">Checkout</a> |
-    <a routerLink="/login" *ngIf="!auth.isLoggedIn()">Login</a>
-    <button *ngIf="auth.isLoggedIn()" (click)="auth.logout()">Sair</button>
+  <a routerLink="/">Home</a> |
+  <a routerLink="/login">Login</a> |
+  <a routerLink="/checkout">Checkout</a> |
+  <a routerLink="/minhas-reservas">Minhas Reservas</a>
   </nav>
+
 </header>
 <hr />
 <router-outlet></router-outlet>

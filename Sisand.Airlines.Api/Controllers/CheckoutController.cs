@@ -1,3 +1,4 @@
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Sisand.Airlines.Domain.Entities;
 using Sisand.Airlines.Domain.Interfaces;
@@ -7,7 +8,7 @@ namespace Sisand.Airlines.Api.Controllers
 {
     [ApiController]
     [Route("api/[controller]")]
-    // [Authorize] // TEMP: Autenticação desativada para execução do teste de aptidão
+    [Authorize] 
     public class CheckoutController : ControllerBase
     {
         private readonly IUnitOfWork _unitOfWork;
@@ -52,7 +53,7 @@ namespace Sisand.Airlines.Api.Controllers
                 var reserva = new Reserva
                 {
                     Id = Guid.NewGuid(),
-                    UsuarioId = usuario.Id,
+                    UsuarioId = usuarioId,
                     AssentoId = req.AssentoId,
                     ValorTotal = assento.Preco,
                     CodigoConfirmacao = $"SIS-{DateTime.UtcNow:yyyyMMddHHmmss}-{new Random().Next(1000, 9999)}"

@@ -8,5 +8,6 @@ namespace Sisand.Airlines.Domain.Repositories
         Task<Assento?> ObterPorIdAsync(Guid id);
         Task ReservarAssentoAsync(Guid assentoId);
         Task<IEnumerable<Assento>> ObterPorVooIdAsync(Guid vooId);
+        Task LiberarAssentoAsync(Guid assentoId);
     }
 }
