@@ -1,0 +1,36 @@
+# ===== FRONTEND =====
+sisand-airlines-frontend/node_modules/
+sisand-airlines-frontend/dist/
+
+# ===== BACKEND =====
+Sisand.Airlines.Api/bin/
+Sisand.Airlines.Api/obj/
+Sisand.Airlines.Application/bin/
+Sisand.Airlines.Application/obj/
+Sisand.Airlines.Domain/bin/
+Sisand.Airlines.Domain/obj/
+Sisand.Airlines.Infrastructure/bin/
+Sisand.Airlines.Infrastructure/obj/
+
+# ===== IDE & SYSTEM FILES =====
+.vs/
+.idea/
+*.suo
+*.user
+*.userosscache
+*.sln.docstates
+.DS_Store
+Thumbs.db
+
+# ===== DOCKER =====
+*.env
+docker-compose.override.yml
+
+# ===== LOGS =====
+*.log
+logs/
+
+# ===== OTHER =====
+*.tmp
+*.bak
+*.swp

@@ -1,0 +1,49 @@
+<h2>Checkout</h2>
+
+<div *ngIf="loading" class="loading">Carregando dados...</div>
+
+<!-- ✅ Lista de voos -->
+<div *ngIf="!loading && flights.length > 0 && !selectedFlight">
+  <h3>Voos disponíveis</h3>
+  <ul class="flight-list">
+    <li *ngFor="let voo of flights" class="flight-item">
+      <div>
+        ✈️ <strong>{{ voo.origem }}</strong> → <strong>{{ voo.destino }}</strong><br />
+        Partida: {{ voo.dataPartida | date:'short' }}<br />
+        Chegada: {{ voo.dataChegada | date:'short' }}<br />
+        Assentos disponíveis: {{ voo.assentosDisponiveis }}
+      </div>
+      <button (click)="selectFlight(voo)">Selecionar</button>
+    </li>
+  </ul>
+</div>
+
+<!-- ✅ Lista de assentos -->
+<div *ngIf="selectedFlight && !selectedSeat && !loading">
+  <h3>Assentos disponíveis para o voo {{ selectedFlight.origem }} → {{ selectedFlight.destino }}</h3>
+  <ul class="seat-list">
+    <li *ngFor="let seat of seats" [class.selected]="seat === selectedSeat">
+      <button (click)="selectSeat(seat)">
+        {{ seat.numero }} - {{ seat.disponivel ? 'Disponível' : 'Ocupado' }}
+      </button>
+    </li>
+  </ul>
+  <button (click)="selectedFlight = null" class="back-button">← Voltar</button>
+</div>
+
+<!-- ✅ Confirmação de reserva -->
+<div *ngIf="selectedSeat && !loading">
+  <h3>Confirmar reserva</h3>
+  <p>Voo: <strong>{{ selectedFlight.origem }} → {{ selectedFlight.destino }}</strong></p>
+  <p>Assento: <strong>{{ selectedSeat.numero }}</strong></p>
+  <button type="button" (click)="confirmarReserva()" class="confirm-button">
+    Confirmar Reserva
+  </button>
+
+  <button type="button" (click)="selectedSeat = null" class="back-button">
+    ← Voltar
+  </button>
+</div>
+
+<!-- ✅ Mensagem final -->
+<p *ngIf="message" class="message">{{ message }}</p>

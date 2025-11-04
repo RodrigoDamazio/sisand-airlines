@@ -1,0 +1,58 @@
+.loading {
+  font-style: italic;
+  margin-bottom: 1rem;
+}
+
+.flight-list, .seat-list {
+  list-style: none;
+  padding: 0;
+}
+
+.flight-item, .seat-list li {
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  padding: 10px;
+  margin-bottom: 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+button {
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  padding: 6px 12px;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #0056b3;
+}
+
+.back-button {
+  background-color: #6c757d;
+}
+
+.back-button:hover {
+  background-color: #5a6268;
+}
+
+.confirm-button {
+  background-color: #28a745;
+}
+
+.confirm-button:hover {
+  background-color: #218838;
+}
+
+.selected {
+  background-color: #007bff;
+  color: white;
+}
+
+.message {
+  margin-top: 20px;
+  font-weight: bold;
+}

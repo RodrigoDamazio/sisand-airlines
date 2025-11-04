@@ -1,0 +1,32 @@
+<div class="login-container">
+  <h2>Login</h2>
+
+  <form (ngSubmit)="submit()" #loginForm="ngForm">
+    <label for="email">Email</label>
+    <input
+      type="email"
+      id="email"
+      name="email"
+      required
+      [(ngModel)]="email"
+      placeholder="seuemail@mail.com"
+    />
+
+    <label for="senha">Senha</label>
+    <input
+      type="password"
+      id="senha"
+      name="senha"
+      required
+      [(ngModel)]="senha"
+      placeholder="••••••••"
+    />
+
+    <button type="submit" [disabled]="!loginForm.valid">Entrar</button>
+  </form>
+
+  <p class="signup-message">
+    Ainda não tem conta?
+    <a routerLink="/cadastro">Crie sua conta agora!</a>
+  </p>
+</div>

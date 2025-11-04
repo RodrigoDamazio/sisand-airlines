@@ -21,22 +21,41 @@ namespace Sisand.Airlines.Infrastructure.Repositories
         public async Task<IEnumerable<Assento>> ObterPorVooAsync(Guid vooId)
         {
             const string sql = @"
-                SELECT id, flight_id AS VooId, seat_number AS Numero,
-                       seat_class AS Classe, price AS Preco
-                FROM seats WHERE flight_id = @VooId;";
+                SELECT 
+                    id, 
+                    flight_id AS VooId, 
+                    seat_number AS Numero,
+                    seat_class AS Classe, 
+                    price AS Preco,
+                    is_available AS Disponivel
+                FROM seats 
+                WHERE flight_id = @VooId;";
 
             return await _connection.QueryAsync<Assento>(sql, new { VooId = vooId });
+        }
+
+        public async Task LiberarAssentoAsync(Guid assentoId)
+        {
+            const string sql = "UPDATE seats SET is_available = TRUE WHERE id = @Id;";
+            await _connection.ExecuteAsync(sql, new { Id = assentoId });
         }
 
         public async Task<Assento?> ObterPorIdAsync(Guid id)
         {
             const string sql = @"
-                SELECT id, flight_id AS VooId, seat_number AS Numero,
-                       seat_class AS Classe, price AS Preco
-                FROM seats WHERE id = @Id;";
+                SELECT 
+                    id, 
+                    flight_id AS VooId, 
+                    seat_number AS Numero,
+                    seat_class AS Classe, 
+                    price AS Preco,
+                    is_available AS Disponivel
+                FROM seats 
+                WHERE id = @Id;";
 
             return await _connection.QueryFirstOrDefaultAsync<Assento>(sql, new { Id = id });
         }
+
 
         public async Task ReservarAssentoAsync(Guid assentoId)
         {

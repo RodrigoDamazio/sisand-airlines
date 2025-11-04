@@ -1,0 +1,35 @@
+<h2>Minhas Reservas</h2>
+
+<div *ngIf="loading">Carregando reservas...</div>
+<div *ngIf="message && !loading" class="message">{{ message }}</div>
+
+<table *ngIf="!loading && reservas.length > 0" class="reservas-table">
+  <thead>
+    <tr>
+      <th>Código</th>
+      <th>Origem</th>
+      <th>Destino</th>
+      <th>Assento</th>
+      <th>Valor</th>
+      <th>Data</th>
+      <th>Ações</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let r of reservas">
+      <td>{{ r.codigoConfirmacao }}</td>
+      <td>{{ r.origem }}</td>
+      <td>{{ r.destino }}</td>
+      <td>{{ r.assento }}</td>
+      <td>{{ r.valorTotal | currency:'BRL' }}</td>
+      <td>{{ r.dataPartida | date:'dd/MM/yyyy HH:mm' }}</td>
+      <td>
+        <button (click)="cancelarReserva(r.id)" class="cancel-button">Cancelar</button>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<div *ngIf="!loading && reservas.length === 0 && !message">
+  Nenhuma reserva encontrada.
+</div>
