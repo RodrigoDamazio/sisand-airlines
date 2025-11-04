@@ -1,0 +1,40 @@
+<div class="cadastro-container card">
+  <h2>Criar Conta</h2>
+
+  <form (ngSubmit)="cadastrar()" #cadastroForm="ngForm" novalidate>
+    <label for="nome">Nome completo</label>
+    <input id="nome" name="nome" [(ngModel)]="nome" required minlength="3" />
+
+    <label for="email">E-mail</label>
+    <input id="email" name="email" type="email" [(ngModel)]="email" required />
+
+    <label for="cpf">CPF</label>
+    <input id="cpf" name="cpf" [(ngModel)]="cpf" required pattern="^\d{11}$" maxlength="11" placeholder="somente números" />
+
+    <label for="dataNascimento">Data de nascimento</label>
+    <input id="dataNascimento" name="dataNascimento" type="date" [(ngModel)]="dataNascimento" required />
+
+    <label for="senha">Senha</label>
+    <input id="senha" name="senha" type="password" [(ngModel)]="senha" required minlength="6" />
+
+    <label for="confirmarSenha">Confirmar senha</label>
+    <input id="confirmarSenha" name="confirmarSenha" type="password" [(ngModel)]="confirmarSenha" required minlength="6" />
+
+    <div class="validation-msg" *ngIf="senha && confirmarSenha && senha !== confirmarSenha">
+      As senhas não coincidem.
+    </div>
+
+    <button type="submit"
+            [disabled]="!cadastroForm.form.valid || senha !== confirmarSenha || loading">
+      {{ loading ? 'Cadastrando...' : 'Cadastrar' }}
+    </button>
+  </form>
+
+  <p class="login-link">
+  Já tem uma conta?
+  <a (click)="irParaLogin()">Faça login</a>
+</p>
+
+
+  <div *ngIf="message" class="message">{{ message }}</div>
+</div>

@@ -1,13 +1,13 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { Router, ActivatedRoute } from '@angular/router';
+import { Router, ActivatedRoute, RouterModule } from '@angular/router';
 import { AuthService } from '../../core/services/auth.service';
 
 @Component({
   selector: 'app-login',
   standalone: true,
-  imports: [CommonModule, FormsModule],
+  imports: [CommonModule, FormsModule, RouterModule],
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.scss']
 })
@@ -22,6 +22,8 @@ export class LoginComponent {
     private router: Router,
     private route: ActivatedRoute
   ) {}
+
+
 
   submit() {
     this.error = '';
@@ -39,4 +41,10 @@ export class LoginComponent {
       }
     });
   }
+
+  testeRota() {
+  console.log('🔹 Clicou no link de cadastro');
+}
+
+
 }

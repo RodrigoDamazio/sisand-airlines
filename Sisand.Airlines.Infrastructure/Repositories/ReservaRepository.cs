@@ -1,5 +1,6 @@
 using Dapper;
 using Npgsql;
+using Sisand.Airlines.Application.DTOs;
 using Sisand.Airlines.Domain.Entities;
 using Sisand.Airlines.Domain.Repositories;
 using Sisand.Airlines.Infrastructure.Context;
@@ -45,26 +46,27 @@ namespace Sisand.Airlines.Infrastructure.Repositories
             await _connection.ExecuteAsync(sql, new { Id = id });
         }
 
-        public async Task<IEnumerable<object>> ObterPorUsuarioAsync(Guid usuarioId)
+        public async Task<IEnumerable<ReservaDetalhadaDto>> ObterPorUsuarioAsync(Guid usuarioId)
         {
-              const string sql = @"
-                                SELECT 
-                                    r.id,
-                                    r.confirmation_code AS CodigoConfirmacao,
-                                    f.origin AS Origem,
-                                    f.destination AS Destino,
-                                    s.seat_number AS Assento,
-                                    r.total_price AS ValorTotal,
-                                    f.departure_timestamp AS DataPartida,
-                                    f.arrival_timestamp AS DataChegada
-                                FROM bookings r
-                                INNER JOIN seats s ON r.seat_id = s.id
-                                INNER JOIN flights f ON s.flight_id = f.id
-                                WHERE r.user_id = @UsuarioId
-                                ORDER BY f.departure_timestamp DESC;";                  
+            const string sql = @"
+                SELECT 
+                    r.id,
+                    r.confirmation_code AS CodigoConfirmacao,
+                    f.origin AS Origem,
+                    f.destination AS Destino,
+                    s.seat_number AS Assento,
+                    r.total_price AS ValorTotal,
+                    f.departure_timestamp AS DataPartida,
+                    f.arrival_timestamp AS DataChegada
+                FROM bookings r
+                INNER JOIN seats s ON r.seat_id = s.id
+                INNER JOIN flights f ON s.flight_id = f.id
+                WHERE r.user_id = @UsuarioId
+                ORDER BY f.departure_timestamp DESC;";                  
 
-            return await _connection.QueryAsync<object>(sql, new { UsuarioId = usuarioId });
+            return await _connection.QueryAsync<ReservaDetalhadaDto>(sql, new { UsuarioId = usuarioId });
         }
+
 
         public async Task<Reserva?> ObterPorIdAsync(Guid id)
         {
