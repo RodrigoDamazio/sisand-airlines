@@ -1,0 +1,71 @@
+.login-container {
+  max-width: 400px;
+  margin: 3rem auto;
+  padding: 2rem;
+  background: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 4px 15px rgba(0, 51, 102, 0.15);
+
+  h2 {
+    text-align: center;
+    color: #003366;
+    margin-bottom: 1.5rem;
+  }
+
+  label {
+    display: block;
+    margin-top: 1rem;
+    color: #003366;
+    font-weight: 500;
+  }
+
+  input {
+    width: 100%;
+    padding: 0.6rem;
+    margin-top: 0.3rem;
+    border: 1px solid #cfd8e3;
+    border-radius: 6px;
+    transition: border-color 0.3s;
+
+    &:focus {
+      border-color: #0059b3;
+      outline: none;
+    }
+  }
+
+  button {
+    width: 100%;
+    margin-top: 1.5rem;
+    padding: 0.7rem;
+    background: #0059b3;
+    color: #fff;
+    border: none;
+    border-radius: 6px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.3s;
+
+    &:hover {
+      background: #003f7d;
+    }
+  }
+
+  .signup-message {
+    text-align: center;
+    margin-top: 1.5rem;
+    font-size: 0.95rem;
+    color: #333;
+
+    a {
+      color: #0059b3;
+      font-weight: 600;
+      text-decoration: none;
+      transition: color 0.3s;
+
+      &:hover {
+        color: #003f7d;
+        text-decoration: underline;
+      }
+    }
+  }
+}

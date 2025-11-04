@@ -2,13 +2,14 @@ import { Routes } from '@angular/router';
 import { HomeComponent } from './pages/home/home.component';
 import { LoginComponent } from './pages/login/login.component';
 import { CheckoutComponent } from './pages/checkout/checkout.component';
-import { authGuard } from './core/guards/auth.guard';
+import { MinhasReservasComponent } from './pages/minhas_reservas/minhas_reservas.component';
+import { CadastroComponent } from './pages/cadastro/cadastro.component';
 
-export const APP_ROUTES: Routes = [
-  { path: '', component: HomeComponent },
+export const routes: Routes = [
+  { path: '', redirectTo: 'home', pathMatch: 'full' },
+  { path: 'home', component: HomeComponent },
   { path: 'login', component: LoginComponent },
-  { path: 'checkout', component: CheckoutComponent, canActivate: [authGuard] },
-  {path: 'minhas-reservas', loadComponent: () => import('./pages/minhas_reservas/minhas_reservas.component')
-                          .then(m => m.MinhasReservasComponent), canActivate: [authGuard]},
-  { path: '**', redirectTo: '' }
+  { path: 'checkout', component: CheckoutComponent },
+  { path: 'minhas-reservas', component: MinhasReservasComponent },
+  { path: 'cadastro', component: CadastroComponent }
 ];
